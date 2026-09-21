@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && request.auth.token.role in ['ADMIN', 'SUPER_ADMIN'];
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Admins have full access to everything
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+
+    // Publicly readable product catalog (only published products)
+    match /products/{productId} {
+      allow read: if resource.data.status == 'PUBLISHED';
+      
+      // Allow reading variants of published products
+      match /variants/{variantId} {
+        allow read: if get(/databases/$(database)/documents/products/$(productId)).data.status == 'PUBLISHED';
+      }
+    }
+
+    // Public taxonomy
+    match /categories/{categoryId} {
+      allow read: if true;
+    }
+    
+    match /collections/{collectionId} {
+      allow read: if true;
+    }
+
+    // Customer-owned documents
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    match /orders/{orderId} {
+      // Allow customers to read their own orders
+      allow read: if isAuthenticated() && resource.data.customerId == request.auth.uid;
+      // Writing orders is done server-side via Admin SDK
+      allow write: if false; 
+    }
+
+    match /content/{documentId} {
+      allow read: if true;
+    }
+  }
+}

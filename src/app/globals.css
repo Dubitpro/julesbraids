@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #000000;
+  --color-ivory: #F5F5F5;
+  --color-warm-white: #FFFFFF;
+  --color-champagne: #D4AF37;
+  --color-taupe: #767676;
+  --color-charcoal: #333333;
+}
+
+:root {
+  background-color: var(--color-warm-white);
+  color: var(--color-obsidian);
+}

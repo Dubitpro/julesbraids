@@ -1,0 +1,6 @@
+{
+  "name": "Julesbraids and Hair",
+  "description": "Production-quality luxury hair storefront and merchant dashboard for JulesBraids & Hairs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
