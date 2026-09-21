@@ -21,15 +21,14 @@ export default async function Homepage() {
           referrerPolicy="no-referrer"
         />
         <div className="relative z-20 text-center px-4 w-full flex flex-col items-center mt-24">
-          <h2 className="text-[10px] md:text-xs font-medium text-white tracking-[0.3em] uppercase mb-4">
-            The Industry Standard
-          </h2>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white uppercase tracking-wider mb-6">
-            Pure Elegance.
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white uppercase tracking-wider mb-3">
+            Jules Braids and Hair
           </h1>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif text-gray-200 tracking-[0.15em] uppercase mb-6 font-light">
+            Wigs, Hairs and Accessories
+          </p>
           <p className="text-sm md:text-base text-gray-200 tracking-wide font-light max-w-xl mx-auto mb-10 leading-relaxed">
-            Experience the unmatched quality of 100% Virgin Indian, Vietnamese, and Cambodian hair.
-            Ethically sourced, masterfully crafted.
+            Experience the unmatched quality of 100% Virgin veitnamese hair, Mexican hair  Cambodian hair, and Chinese hair….Ethically sourced, masterfully crafted.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
