@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Settings,
   Save,
@@ -12,10 +12,19 @@ import {
   Bell,
   Sparkles,
   Info,
+  UploadCloud,
+  Image as ImageIcon,
+  Video as VideoIcon,
 } from "lucide-react";
 import { StoreSettings } from "@/src/lib/admin-data";
 
 export default function AdminSettingsPage() {
+  const heroFileRef = useRef<HTMLInputElement>(null);
+  const heroVideoFileRef = useRef<HTMLInputElement>(null);
+  const [heroUploadStatus, setHeroUploadStatus] = useState<string | null>(null);
+  const [heroVideoStatus, setHeroVideoStatus] = useState<string | null>(null);
+  const [heroPreviewUrl, setHeroPreviewUrl] = useState<string>("/hero-desktop.jpg");
+  const [videoPreviewUrl, setVideoPreviewUrl] = useState<string>("/hero-video.mp4");
   const [settings, setSettings] = useState<StoreSettings>({
     storeName: "JulesBraids & Hairs",
     contactEmail: "contact@julesbraids.com",
@@ -48,6 +57,58 @@ export default function AdminSettingsPage() {
       .catch((err) => console.error("Error fetching settings:", err))
       .finally(() => setLoading(false));
   }, []);
+
+  const handleHeroUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setHeroUploadStatus("Uploading your original photo with 100% fidelity...");
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/settings/hero", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setHeroPreviewUrl(data.url);
+        setHeroUploadStatus("Success! Original photo active on desktop storefront (Zero AI alteration).");
+        setTimeout(() => setHeroUploadStatus(null), 5000);
+      } else {
+        setHeroUploadStatus(data.error || "Upload failed");
+      }
+    } catch (err: any) {
+      setHeroUploadStatus("Upload failed. Please try again.");
+    }
+  };
+
+  const handleHeroVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setHeroVideoStatus("Uploading video file byte-for-byte...");
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/settings/hero-video", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setVideoPreviewUrl(data.url);
+        setHeroVideoStatus("Success! Hero video active and auto-playing on storefront.");
+        setTimeout(() => setHeroVideoStatus(null), 5000);
+      } else {
+        setHeroVideoStatus(data.error || "Upload failed");
+      }
+    } catch (err: any) {
+      setHeroVideoStatus("Upload failed. Please try again.");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -183,7 +244,71 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
-          {/* Section 2: Announcement Bar */}
+          {/* Section 2: Hero Autoplay Background Video */}
+          <div className="rounded-xl border border-taupe/20 bg-white p-5 sm:p-6 shadow-2xs space-y-4">
+            <div className="flex items-center justify-between border-b border-taupe/15 pb-3">
+              <div className="flex items-center gap-2">
+                <VideoIcon className="h-4 w-4 text-champagne" />
+                <h2 className="text-base font-serif font-medium text-obsidian">
+                  Hero Autoplay Background Video
+                </h2>
+              </div>
+              <span className="text-[10px] uppercase font-semibold tracking-wider text-champagne-dark bg-champagne/15 px-2.5 py-0.5 rounded-full border border-champagne/30">
+                Live Autoplay Active
+              </span>
+            </div>
+
+            <p className="text-xs text-taupe">
+              Upload your video file (MP4, WebM, QuickTime). It replaces static pictures and auto-plays seamlessly on an infinite loop across desktop and mobile devices.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-5 pt-2">
+              <div className="h-32 w-56 rounded-lg overflow-hidden bg-black border border-taupe/25 shrink-0 relative group">
+                <video
+                  src={videoPreviewUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition pointer-events-none">
+                  <span className="text-[10px] text-white uppercase tracking-wider font-semibold">
+                    Current Video
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex-1 w-full space-y-2">
+                <input
+                  type="file"
+                  ref={heroVideoFileRef}
+                  accept="video/mp4,video/webm,video/quicktime"
+                  onChange={handleHeroVideoUpload}
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => heroVideoFileRef.current?.click()}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-obsidian px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow hover:bg-charcoal transition active:scale-95"
+                >
+                  <UploadCloud className="h-4 w-4 text-champagne" />
+                  <span>Upload Hero Video (.mp4)</span>
+                </button>
+
+                {heroVideoStatus && (
+                  <p className="text-xs font-medium text-emerald-800 bg-emerald-50 p-2 rounded-md border border-emerald-500/20 animate-fadeIn">
+                    {heroVideoStatus}
+                  </p>
+                )}
+                <p className="text-[11px] text-taupe">
+                  Supports MP4, WebM, QuickTime up to 100MB. Configured for silent inline autoplay.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Announcement Bar */}
           <div className="rounded-xl border border-taupe/20 bg-white p-5 sm:p-6 shadow-2xs space-y-4">
             <div className="flex items-center gap-2 border-b border-taupe/15 pb-3">
               <Sparkles className="h-4 w-4 text-champagne" />

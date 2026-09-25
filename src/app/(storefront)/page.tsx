@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllProducts } from "@/src/lib/products-store";
 import { ProductCard } from "@/src/components/product/ProductCard";
+import { HeroVideoClient } from "@/src/components/hero/HeroVideoClient";
 
 export default async function Homepage() {
   const products = await getAllProducts({ status: "PUBLISHED" });
@@ -11,38 +12,38 @@ export default async function Homepage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-        <Image
-          src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=2574&auto=format&fit=crop"
-          alt="Premium Virgin Hair Model"
-          fill
-          className="object-cover opacity-60"
-          priority
-          referrerPolicy="no-referrer"
-        />
-        <div className="relative z-20 text-center px-4 w-full flex flex-col items-center mt-24">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white uppercase tracking-wider mb-3">
-            Jules Braids and Hair
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif text-gray-200 tracking-[0.15em] uppercase mb-6 font-light">
-            Wigs, Hairs and Accessories
-          </p>
-          <p className="text-sm md:text-base text-gray-200 tracking-wide font-light max-w-xl mx-auto mb-10 leading-relaxed">
-            Experience the unmatched quality of 100% Virgin veitnamese hair, Mexican hair  Cambodian hair, and Chinese hair….Ethically sourced, masterfully crafted.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/shop"
-              className="inline-flex items-center justify-center bg-white text-black px-10 py-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-gray-200 transition-colors duration-300"
-            >
-              Shop Collections
-            </Link>
-            <Link
-              href="/admin"
-              className="inline-flex items-center justify-center border border-white/40 bg-black/40 backdrop-blur text-white px-8 py-4 text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              Merchant Admin
-            </Link>
+      <section className="relative h-screen min-h-[600px] w-full flex items-center overflow-hidden bg-black">
+        {/* Full Hero Autoplay Background Video (Mobile & Desktop) */}
+        <div className="absolute inset-0">
+          <HeroVideoClient />
+        </div>
+
+        {/* Content Container - Centered on Mobile, Left-aligned on Desktop */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-20">
+          <div className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white uppercase tracking-wider mb-3 leading-tight">
+              PREMIUM HAIR. TIMELESS BEAUTY.
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif text-gray-200 tracking-[0.1em] mb-6 font-light">
+              Hair That Makes an Entrance.
+            </p>
+            <p className="text-sm md:text-base text-gray-200 tracking-wide font-light max-w-xl mb-10 leading-relaxed">
+              Discover luxurious human hair crafted for women who appreciate exceptional quality, effortless beauty, and a look that commands attention.
+            </p>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+              <Link
+                href="/shop"
+                className="inline-flex items-center justify-center bg-white text-black px-10 py-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-gray-200 transition-colors duration-300 shadow-md"
+              >
+                Shop Luxury Hair
+              </Link>
+              <Link
+                href="/shop"
+                className="inline-flex items-center justify-center border border-white/60 bg-black/40 backdrop-blur text-white px-8 py-4 text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors duration-300"
+              >
+                Explore Collection
+              </Link>
+            </div>
           </div>
         </div>
       </section>
