@@ -33,7 +33,7 @@ export default async function Homepage() {
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center bg-white text-black px-10 py-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-gray-200 transition-colors duration-300 shadow-md"
+                className="inline-flex items-center justify-center bg-[#C5A059] hover:bg-[#B38F46] text-black px-10 py-4 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] border border-[#D4AF37]/50"
               >
                 Shop Luxury Hair
               </Link>
