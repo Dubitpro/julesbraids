@@ -78,8 +78,8 @@ export function HeroVideoClient() {
   };
 
   return (
-    <div className="absolute right-0 top-0 bottom-0 w-full md:w-[62%] lg:w-[58%] overflow-hidden bg-black">
-      {/* HTML5 Native Video configured for strict silent background Autoplay at right end */}
+    <div className="absolute inset-0 md:left-auto md:right-0 md:w-[62%] lg:w-[58%] overflow-hidden bg-black">
+      {/* HTML5 Native Video: centered on mobile, right-aligned on desktop */}
       <video
         ref={videoRef}
         src={videoSrc}
@@ -88,7 +88,7 @@ export function HeroVideoClient() {
         muted
         playsInline
         controls={false}
-        className="h-full w-full object-cover object-right"
+        className="h-full w-full object-cover object-center md:object-right"
       />
 
       {/* Seamless blend from solid black left background into the video */}
