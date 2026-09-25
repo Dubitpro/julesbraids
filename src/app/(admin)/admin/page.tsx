@@ -11,9 +11,12 @@ import {
   ExternalLink,
   ArrowRight,
   Eye,
-  CheckCircle2,
-  Clock,
   RefreshCw,
+  Archive,
+  Layers,
+  Tags,
+  AlertTriangle,
+  CheckCircle2,
 } from "lucide-react";
 import { formatCurrency } from "@/src/lib/utils";
 
@@ -49,84 +52,164 @@ export default function AdminDashboard() {
   const liveCount = products.filter((p) => p.status === "PUBLISHED").length;
   const draftCount = products.filter((p) => p.status === "DRAFT").length;
   const totalVariants = products.reduce((acc, p) => acc + (p.variants?.length || 0), 0);
+  const lowStockCount = products.filter((p) =>
+    p.variants?.some((v: any) => Number(v.stock) > 0 && Number(v.stock) <= 5)
+  ).length;
 
   const stats = [
-    { name: "Live Products", value: `${liveCount}`, sub: `${draftCount} drafts in catalog`, icon: Package, color: "text-emerald-700 bg-emerald-50" },
-    { name: "Total Variants", value: `${totalVariants}`, sub: "Lengths & textures configured", icon: TrendingUp, color: "text-champagne-dark bg-champagne/15" },
-    { name: "Orders", value: "0", sub: "Ready for live checkout", icon: ShoppingBag, color: "text-blue-700 bg-blue-50" },
-    { name: "Store Visits", value: "Active", sub: "Storefront live & accessible", icon: Users, color: "text-purple-700 bg-purple-50" },
+    {
+      name: "Live Products",
+      value: `${liveCount}`,
+      sub: `${draftCount} drafts in catalog`,
+      icon: Package,
+      color: "text-emerald-700 bg-emerald-50",
+    },
+    {
+      name: "Hair Variants",
+      value: `${totalVariants}`,
+      sub: "Lengths & textures active",
+      icon: TrendingUp,
+      color: "text-champagne bg-champagne/15",
+    },
+    {
+      name: "Low Stock Items",
+      value: `${lowStockCount}`,
+      sub: "Variants needing restock",
+      icon: AlertTriangle,
+      color: "text-amber-700 bg-amber-50",
+    },
+    {
+      name: "Store Status",
+      value: "Live",
+      sub: "Storefront online & accessible",
+      icon: CheckCircle2,
+      color: "text-blue-700 bg-blue-50",
+    },
   ];
 
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-6 sm:space-y-8 pb-16">
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-taupe/20 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-taupe/20 pb-5">
         <div>
-          <h1 className="text-3xl font-serif text-obsidian tracking-tight">Admin Overview</h1>
-          <p className="text-sm text-taupe mt-1">
-            Welcome to your Julesbraids & Hair management console.
+          <h1 className="text-2xl sm:text-3xl font-serif text-obsidian tracking-tight">
+            Admin Overview
+          </h1>
+          <p className="text-xs sm:text-sm text-taupe mt-1">
+            Manage your JulesBraids &amp; Hairs luxury inventory, orders, and catalog.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
           <Link
             href="/"
             target="_blank"
-            className="inline-flex items-center justify-center gap-1.5 rounded-md border border-taupe/20 bg-white px-4 py-2 text-sm font-medium text-charcoal shadow-sm hover:bg-warm-white transition"
+            className="inline-flex items-center justify-center gap-1.5 rounded-md border border-taupe/20 bg-white px-3.5 py-2 text-xs sm:text-sm font-medium text-charcoal shadow-2xs hover:bg-warm-white transition active:scale-[0.98]"
           >
             <Eye className="h-4 w-4 text-taupe" />
-            View Storefront
+            <span>Storefront</span>
           </Link>
           <Link
             href="/admin/products/new"
-            className="inline-flex items-center justify-center gap-1.5 rounded-md bg-obsidian px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-charcoal transition"
+            className="inline-flex items-center justify-center gap-1.5 rounded-md bg-obsidian px-3.5 py-2 text-xs sm:text-sm font-medium text-white shadow-2xs hover:bg-charcoal transition active:scale-[0.98]"
           >
             <PlusCircle className="h-4 w-4 text-champagne" />
-            Upload Product
+            <span>Upload Product</span>
           </Link>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.name}
-              className="relative overflow-hidden rounded-xl border border-taupe/20 bg-white p-6 shadow-xs"
+              className="relative overflow-hidden rounded-xl border border-taupe/20 bg-white p-4 sm:p-5 shadow-2xs"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-taupe">
+                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-taupe">
                   {stat.name}
                 </span>
-                <div className={`rounded-md p-2.5 ${stat.color}`}>
-                  <Icon className="h-5 w-5" />
+                <div className={`rounded-md p-2 ${stat.color}`}>
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
               </div>
-              <div className="mt-3 text-2xl font-serif font-medium text-obsidian">
+              <div className="mt-2 text-xl sm:text-2xl font-serif font-medium text-obsidian">
                 {stat.value}
               </div>
-              <p className="text-xs text-taupe mt-1">{stat.sub}</p>
+              <p className="text-[11px] text-taupe mt-0.5 line-clamp-1">{stat.sub}</p>
             </div>
           );
         })}
       </div>
 
-      {/* Quick Actions & Recent Products */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Quick Access Tiles for Mobile & Desktop */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <Link
+          href="/admin/products"
+          className="flex flex-col items-center justify-center p-3.5 rounded-xl border border-taupe/20 bg-white hover:border-obsidian hover:shadow-2xs transition text-center group"
+        >
+          <Package className="h-5 w-5 text-taupe group-hover:text-obsidian mb-1.5" />
+          <span className="text-xs font-semibold text-obsidian group-hover:text-champagne">
+            Catalog
+          </span>
+          <span className="text-[10px] text-taupe">{totalProducts} Products</span>
+        </Link>
+
+        <Link
+          href="/admin/inventory"
+          className="flex flex-col items-center justify-center p-3.5 rounded-xl border border-taupe/20 bg-white hover:border-obsidian hover:shadow-2xs transition text-center group"
+        >
+          <Archive className="h-5 w-5 text-taupe group-hover:text-obsidian mb-1.5" />
+          <span className="text-xs font-semibold text-obsidian group-hover:text-champagne">
+            Inventory
+          </span>
+          <span className="text-[10px] text-taupe">{totalVariants} Variants</span>
+        </Link>
+
+        <Link
+          href="/admin/categories"
+          className="flex flex-col items-center justify-center p-3.5 rounded-xl border border-taupe/20 bg-white hover:border-obsidian hover:shadow-2xs transition text-center group"
+        >
+          <Tags className="h-5 w-5 text-taupe group-hover:text-obsidian mb-1.5" />
+          <span className="text-xs font-semibold text-obsidian group-hover:text-champagne">
+            Categories
+          </span>
+          <span className="text-[10px] text-taupe">6 Classifications</span>
+        </Link>
+
+        <Link
+          href="/admin/orders"
+          className="flex flex-col items-center justify-center p-3.5 rounded-xl border border-taupe/20 bg-white hover:border-obsidian hover:shadow-2xs transition text-center group"
+        >
+          <ShoppingBag className="h-5 w-5 text-taupe group-hover:text-obsidian mb-1.5" />
+          <span className="text-xs font-semibold text-obsidian group-hover:text-champagne">
+            Orders
+          </span>
+          <span className="text-[10px] text-taupe">Manage Sales</span>
+        </Link>
+      </div>
+
+      {/* Main Content Grid: Recent Products (2 Cols) & Quick Shortcuts (1 Col) */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Recent Products (2 Cols) */}
-        <div className="lg:col-span-2 rounded-xl border border-taupe/20 bg-white p-6 shadow-xs space-y-4">
+        <div className="lg:col-span-2 rounded-xl border border-taupe/20 bg-white p-4 sm:p-6 shadow-2xs space-y-4">
           <div className="flex items-center justify-between border-b border-taupe/10 pb-4">
             <div>
-              <h2 className="text-lg font-serif font-medium text-obsidian">Recent Products</h2>
-              <p className="text-xs text-taupe mt-0.5">Manage products or view them live on your store.</p>
+              <h2 className="text-base sm:text-lg font-serif font-medium text-obsidian">
+                Recent Products
+              </h2>
+              <p className="text-xs text-taupe mt-0.5">
+                Quickly edit items or preview on your customer storefront.
+              </p>
             </div>
             <Link
               href="/admin/products"
               className="text-xs font-semibold uppercase tracking-wider text-obsidian hover:text-champagne flex items-center gap-1 transition"
             >
-              View Catalog <ArrowRight className="h-3.5 w-3.5" />
+              All <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
@@ -149,11 +232,18 @@ export default function AdminDashboard() {
           ) : (
             <div className="divide-y divide-taupe/10">
               {products.slice(0, 5).map((p) => (
-                <div key={p.id} className="py-3.5 flex items-center justify-between gap-4">
+                <div
+                  key={p.id}
+                  className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                >
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="h-12 w-10 rounded overflow-hidden bg-taupe/10 border border-taupe/15 shrink-0">
+                    <div className="h-12 w-11 rounded overflow-hidden bg-taupe/10 border border-taupe/15 shrink-0">
                       {p.images?.[0] ? (
-                        <img src={p.images[0]} alt={p.name} className="h-full w-full object-cover" />
+                        <img
+                          src={p.images[0]}
+                          alt={p.name}
+                          className="h-full w-full object-cover"
+                        />
                       ) : (
                         <div className="h-full w-full flex items-center justify-center text-[9px] text-taupe">
                           No Pic
@@ -167,8 +257,10 @@ export default function AdminDashboard() {
                       >
                         {p.name}
                       </Link>
-                      <div className="flex items-center gap-2 text-xs text-taupe mt-0.5">
-                        <span className="font-medium text-obsidian">{formatCurrency(p.basePrice)}</span>
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-taupe mt-0.5">
+                        <span className="font-semibold text-obsidian">
+                          {formatCurrency(p.basePrice)}
+                        </span>
                         <span>•</span>
                         <span>{p.productType}</span>
                         <span>•</span>
@@ -177,7 +269,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0 pt-1 sm:pt-0 border-t border-taupe/5 sm:border-0">
                     <span
                       className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${
                         p.status === "PUBLISHED"
@@ -187,14 +279,22 @@ export default function AdminDashboard() {
                     >
                       {p.status}
                     </span>
-                    <Link
-                      href={`/products/${p.slug}`}
-                      target="_blank"
-                      className="p-1.5 text-taupe hover:text-obsidian hover:bg-taupe/10 rounded transition"
-                      title="View on store"
-                    >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </Link>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={`/admin/products/${p.id}/edit`}
+                        className="p-1.5 text-xs text-charcoal hover:text-obsidian hover:bg-taupe/10 rounded transition"
+                      >
+                        Edit
+                      </Link>
+                      <Link
+                        href={`/products/${p.slug}`}
+                        target="_blank"
+                        className="p-1.5 text-taupe hover:text-obsidian hover:bg-taupe/10 rounded transition"
+                        title="View on store"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -203,8 +303,8 @@ export default function AdminDashboard() {
         </div>
 
         {/* Quick Actions Panel (1 Col) */}
-        <div className="space-y-6">
-          <div className="rounded-xl border border-taupe/20 bg-white p-6 shadow-xs space-y-4">
+        <div className="space-y-5">
+          <div className="rounded-xl border border-taupe/20 bg-white p-5 shadow-2xs space-y-4">
             <h2 className="text-base font-serif font-medium text-obsidian border-b border-taupe/10 pb-3">
               Quick Shortcuts
             </h2>
@@ -218,36 +318,48 @@ export default function AdminDashboard() {
                   <p className="text-xs font-semibold uppercase tracking-wider text-obsidian group-hover:text-champagne">
                     Upload New Product
                   </p>
-                  <p className="text-[11px] text-taupe">Add images, prices & inch variants</p>
+                  <p className="text-[11px] text-taupe">Add images, prices &amp; inch variants</p>
                 </div>
-                <PlusCircle className="h-4 w-4 text-taupe group-hover:text-obsidian" />
+                <PlusCircle className="h-4 w-4 text-taupe group-hover:text-obsidian shrink-0" />
               </Link>
 
               <Link
-                href="/admin/products"
+                href="/admin/inventory"
                 className="flex items-center justify-between p-3 rounded-lg border border-taupe/20 hover:border-obsidian hover:bg-warm-white/50 transition group"
               >
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-obsidian group-hover:text-champagne">
-                    Manage Inventory
+                    Live Inventory Stock
                   </p>
-                  <p className="text-[11px] text-taupe">View full catalog & update stock</p>
+                  <p className="text-[11px] text-taupe">Update counts across lengths</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-taupe group-hover:text-obsidian" />
+                <Archive className="h-4 w-4 text-taupe group-hover:text-obsidian shrink-0" />
               </Link>
 
               <Link
-                href="/shop"
-                target="_blank"
+                href="/admin/orders"
                 className="flex items-center justify-between p-3 rounded-lg border border-taupe/20 hover:border-obsidian hover:bg-warm-white/50 transition group"
               >
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-obsidian group-hover:text-champagne">
-                    Customer Storefront
+                    Order Center
                   </p>
-                  <p className="text-[11px] text-taupe">Preview live customer catalog</p>
+                  <p className="text-[11px] text-taupe">Fulfill and track customer purchases</p>
                 </div>
-                <ExternalLink className="h-4 w-4 text-taupe group-hover:text-obsidian" />
+                <ShoppingBag className="h-4 w-4 text-taupe group-hover:text-obsidian shrink-0" />
+              </Link>
+
+              <Link
+                href="/admin/settings"
+                className="flex items-center justify-between p-3 rounded-lg border border-taupe/20 hover:border-obsidian hover:bg-warm-white/50 transition group"
+              >
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-obsidian group-hover:text-champagne">
+                    Store Settings
+                  </p>
+                  <p className="text-[11px] text-taupe">Shipping, policies &amp; branding</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-taupe group-hover:text-obsidian shrink-0" />
               </Link>
             </div>
           </div>
@@ -257,11 +369,11 @@ export default function AdminDashboard() {
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-wider text-obsidian">
-                Catalog Engine Ready
+                Catalog Engine Synchronized
               </span>
             </div>
             <p className="text-xs text-charcoal/80 leading-relaxed">
-              Products uploaded via the admin panel are saved immediately and appear in the customer storefront and search.
+              All inventory and product modifications are instantly indexed and rendered on the live JulesBraids &amp; Hairs customer storefront.
             </p>
           </div>
         </div>

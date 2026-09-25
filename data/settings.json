@@ -1,0 +1,15 @@
+{
+  "storeName": "JulesBraids & Hairs",
+  "contactEmail": "contact@julesbraids.com",
+  "supportPhone": "+1 (800) 585-3742",
+  "currency": "USD",
+  "timezone": "America/New_York",
+  "announcementText": "Experience 100% Virgin Vietnamese, Mexican, Cambodian & Chinese Hair • Free Worldwide Shipping on Orders $300+",
+  "showAnnouncement": true,
+  "lowStockThreshold": 5,
+  "autoHideOutOfStock": false,
+  "standardShippingFee": 15,
+  "expressShippingFee": 35,
+  "freeShippingThreshold": 300,
+  "hygienePolicy": "For hygiene and sanitary standards, all hair bundles, lace closures, and wigs must be in their original unopened security ties and unworn condition to qualify for exchanges within 14 days."
+}

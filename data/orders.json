@@ -1,0 +1,150 @@
+[
+  {
+    "id": "ord-1049",
+    "orderNumber": "JB-1049",
+    "customerName": "Aaliyah Washington",
+    "customerEmail": "aaliyah.w@example.com",
+    "customerPhone": "+1 (555) 234-8901",
+    "shippingAddress": {
+      "street": "742 Evergreen Terrace",
+      "city": "Atlanta",
+      "state": "GA",
+      "zipCode": "30301",
+      "country": "United States"
+    },
+    "items": [
+      {
+        "productId": "prod-viet-straight-wig",
+        "name": "Raw Vietnamese Natural Straight Lace Front Wig",
+        "length": "22 inch",
+        "sku": "VNW-22",
+        "price": 540,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=300&auto=format&fit=crop"
+      },
+      {
+        "productId": "prod-bonnet",
+        "name": "Silk Satin Protective Sleep Bonnet",
+        "length": "One Size",
+        "sku": "ACC-BNT-01",
+        "price": 25,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=300&auto=format&fit=crop"
+      }
+    ],
+    "subtotal": 565,
+    "shippingCost": 0,
+    "tax": 42.38,
+    "total": 607.38,
+    "currency": "USD",
+    "paymentStatus": "PAID",
+    "fulfillmentStatus": "UNFULFILLED",
+    "createdAt": "2026-09-24T18:45:00Z",
+    "notes": "Please double knot the lace melt band. Expedited packing requested."
+  },
+  {
+    "id": "ord-1048",
+    "orderNumber": "JB-1048",
+    "customerName": "Chloe Dupont",
+    "customerEmail": "chloe.dupont@parisstyle.fr",
+    "customerPhone": "+33 6 12 34 56 78",
+    "shippingAddress": {
+      "street": "15 Rue de la Paix",
+      "city": "Paris",
+      "state": "Île-de-France",
+      "zipCode": "75002",
+      "country": "France"
+    },
+    "items": [
+      {
+        "productId": "prod-indian-body-wave",
+        "name": "Virgin Indian Body Wave 3-Bundle Deal",
+        "length": "20\", 22\", 24\"",
+        "sku": "BDL-BW-202224",
+        "price": 380,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=300&auto=format&fit=crop"
+      }
+    ],
+    "subtotal": 380,
+    "shippingCost": 35,
+    "tax": 0,
+    "total": 415,
+    "currency": "USD",
+    "paymentStatus": "PAID",
+    "fulfillmentStatus": "PROCESSING",
+    "carrier": "DHL Express",
+    "trackingNumber": "DHL-9842183921",
+    "createdAt": "2026-09-23T14:15:00Z"
+  },
+  {
+    "id": "ord-1047",
+    "orderNumber": "JB-1047",
+    "customerName": "Danielle Brooks",
+    "customerEmail": "danielle.b@salonlux.com",
+    "customerPhone": "+1 (555) 876-5432",
+    "shippingAddress": {
+      "street": "1200 Brickell Ave, Suite 400",
+      "city": "Miami",
+      "state": "FL",
+      "zipCode": "33131",
+      "country": "United States"
+    },
+    "items": [
+      {
+        "productId": "prod-burmese-curly-closure",
+        "name": "HD Melt 5x5 Swiss Lace Closure - Burmese Curly",
+        "length": "18 inch",
+        "sku": "CLS-BC-18",
+        "price": 195,
+        "quantity": 2,
+        "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=300&auto=format&fit=crop"
+      }
+    ],
+    "subtotal": 390,
+    "shippingCost": 0,
+    "tax": 27.3,
+    "total": 417.3,
+    "currency": "USD",
+    "paymentStatus": "PAID",
+    "fulfillmentStatus": "SHIPPED",
+    "carrier": "FedEx",
+    "trackingNumber": "FDX-7749102830",
+    "createdAt": "2026-09-22T09:30:00Z"
+  },
+  {
+    "id": "ord-1046",
+    "orderNumber": "JB-1046",
+    "customerName": "Brianna Taylor",
+    "customerEmail": "brianna.t@glamhair.org",
+    "customerPhone": "+1 (555) 432-1098",
+    "shippingAddress": {
+      "street": "450 Sutter St",
+      "city": "San Francisco",
+      "state": "CA",
+      "zipCode": "94108",
+      "country": "United States"
+    },
+    "items": [
+      {
+        "productId": "prod-viet-straight-wig",
+        "name": "Raw Vietnamese Natural Straight Lace Front Wig",
+        "length": "26 inch",
+        "sku": "VNW-26",
+        "price": 610,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=300&auto=format&fit=crop"
+      }
+    ],
+    "subtotal": 610,
+    "shippingCost": 0,
+    "tax": 51.85,
+    "total": 661.85,
+    "currency": "USD",
+    "paymentStatus": "PAID",
+    "fulfillmentStatus": "DELIVERED",
+    "carrier": "UPS",
+    "trackingNumber": "1Z9999999999999999",
+    "createdAt": "2026-09-20T11:20:00Z"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "cust-1",
+    "name": "Aaliyah Washington",
+    "email": "aaliyah.w@example.com",
+    "phone": "+1 (555) 234-8901",
+    "totalOrders": 4,
+    "totalSpent": 1845.5,
+    "tier": "VIP",
+    "city": "Atlanta, GA",
+    "country": "United States",
+    "lastOrderDate": "2026-09-24",
+    "notes": "Prefers raw Vietnamese 22\"-26\" hair. Always add silk bonnet gift.",
+    "createdAt": "2025-11-15T08:00:00Z"
+  },
+  {
+    "id": "cust-2",
+    "name": "Danielle Brooks",
+    "email": "danielle.b@salonlux.com",
+    "phone": "+1 (555) 876-5432",
+    "totalOrders": 6,
+    "totalSpent": 2630,
+    "tier": "VIP",
+    "city": "Miami, FL",
+    "country": "United States",
+    "lastOrderDate": "2026-09-22",
+    "notes": "Salon owner & master braider. Buys wholesale bundles & HD closures.",
+    "createdAt": "2025-08-10T11:00:00Z"
+  },
+  {
+    "id": "cust-3",
+    "name": "Chloe Dupont",
+    "email": "chloe.dupont@parisstyle.fr",
+    "phone": "+33 6 12 34 56 78",
+    "totalOrders": 2,
+    "totalSpent": 795,
+    "tier": "GOLD",
+    "city": "Paris",
+    "country": "France",
+    "lastOrderDate": "2026-09-23",
+    "notes": "European international client. Prefers DHL express shipping.",
+    "createdAt": "2026-03-01T15:00:00Z"
+  },
+  {
+    "id": "cust-4",
+    "name": "Brianna Taylor",
+    "email": "brianna.t@glamhair.org",
+    "phone": "+1 (555) 432-1098",
+    "totalOrders": 1,
+    "totalSpent": 661.85,
+    "tier": "STANDARD",
+    "city": "San Francisco, CA",
+    "country": "United States",
+    "lastOrderDate": "2026-09-20",
+    "createdAt": "2026-09-18T10:00:00Z"
+  }
+]

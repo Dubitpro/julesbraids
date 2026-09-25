@@ -296,7 +296,7 @@ export function ProductForm({ initialData, isEditing = false }: ProductFormProps
       )}
 
       {/* Header Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-taupe/20 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-taupe/20 pb-5 sm:pb-6">
         <div>
           <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-taupe mb-1">
             <Link href="/admin/products" className="hover:text-obsidian flex items-center gap-1">
@@ -305,28 +305,28 @@ export function ProductForm({ initialData, isEditing = false }: ProductFormProps
             <span>/</span>
             <span>{isEditing ? "Edit Product" : "New Upload"}</span>
           </div>
-          <h1 className="text-3xl font-serif text-obsidian tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-serif text-obsidian tracking-tight">
             {isEditing ? "Edit Product" : "Upload Luxury Hair Product"}
           </h1>
-          <p className="text-sm text-taupe mt-1">
+          <p className="text-xs sm:text-sm text-taupe mt-1">
             Fill in the hair specifications, upload gallery images, and set up your length variants.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <Link
             href="/admin/products"
-            className="inline-flex items-center justify-center rounded-md border border-taupe/20 bg-white px-4 py-2 text-sm font-medium text-charcoal shadow-sm hover:bg-warm-white focus:outline-none transition"
+            className="inline-flex items-center justify-center rounded-md border border-taupe/20 bg-white px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-medium text-charcoal shadow-sm hover:bg-warm-white focus:outline-none transition"
           >
-            <X className="mr-2 h-4 w-4 text-taupe" />
+            <X className="mr-1.5 h-4 w-4 text-taupe" />
             Cancel
           </Link>
           <button
             type="submit"
             disabled={isSubmitting || isUploading}
-            className="inline-flex items-center justify-center rounded-md bg-obsidian px-5 py-2 text-sm font-medium text-white shadow-sm hover:bg-charcoal focus:outline-none focus:ring-2 focus:ring-champagne focus:ring-offset-2 disabled:opacity-50 transition"
+            className="inline-flex items-center justify-center rounded-md bg-obsidian px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium text-white shadow-sm hover:bg-charcoal focus:outline-none focus:ring-2 focus:ring-champagne focus:ring-offset-2 disabled:opacity-50 transition"
           >
-            <Save className="mr-2 h-4 w-4" />
+            <Save className="mr-1.5 h-4 w-4 text-champagne" />
             {isSubmitting ? "Saving Product..." : isEditing ? "Save Changes" : "Publish Product"}
           </button>
         </div>
@@ -550,15 +550,15 @@ export function ProductForm({ initialData, isEditing = false }: ProductFormProps
                   Set prices and stock quantities across different inch lengths or bundles.
                 </p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={handleGenerateStandardVariants}
-                  className="inline-flex items-center rounded-md border border-champagne/40 bg-champagne/10 px-3 py-1.5 text-xs font-medium text-champagne-dark hover:bg-champagne/20 transition"
+                  className="inline-flex items-center rounded-md border border-champagne/40 bg-champagne/10 px-2.5 sm:px-3 py-1.5 text-xs font-medium text-champagne-dark hover:bg-champagne/20 transition"
                   title="Generate 16 inch to 28 inch variants automatically"
                 >
                   <Sparkles className="h-3.5 w-3.5 mr-1 text-champagne" />
-                  Auto-Populate Lengths (16&quot; - 28&quot;)
+                  Auto-Populate (16&quot; - 28&quot;)
                 </button>
                 <button
                   type="button"

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cat-wigs",
+    "name": "Luxury Wigs",
+    "slug": "wigs",
+    "description": "Pre-plucked HD lace front wigs, glueless 360 wigs, and full lace natural units.",
+    "imageUrl": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop",
+    "productType": "WIG",
+    "isActive": true,
+    "createdAt": "2026-01-10T12:00:00Z"
+  },
+  {
+    "id": "cat-bundles",
+    "name": "Hair Bundles",
+    "slug": "bundles",
+    "description": "100% Virgin Indian temple hair and Vietnamese single-donor bundle deals.",
+    "imageUrl": "https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=800&auto=format&fit=crop",
+    "productType": "BUNDLE",
+    "isActive": true,
+    "createdAt": "2026-01-10T12:00:00Z"
+  },
+  {
+    "id": "cat-closures",
+    "name": "HD Lace Closures",
+    "slug": "closures",
+    "description": "Flawless melt 4x4, 5x5, and 6x6 HD Swiss lace closures with invisible parting.",
+    "imageUrl": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=800&auto=format&fit=crop",
+    "productType": "CLOSURE",
+    "isActive": true,
+    "createdAt": "2026-01-10T12:00:00Z"
+  },
+  {
+    "id": "cat-frontals",
+    "name": "HD Ear-to-Ear Frontals",
+    "slug": "frontals",
+    "description": "13x4 and 13x6 real Swiss ultra-thin frontal pieces for seamless hairlines.",
+    "imageUrl": "https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=800&auto=format&fit=crop",
+    "productType": "FRONTAL",
+    "isActive": true,
+    "createdAt": "2026-01-10T12:00:00Z"
+  },
+  {
+    "id": "cat-accessories",
+    "name": "Haircare & Accessories",
+    "slug": "accessories",
+    "description": "Silk sleep bonnets, melt bands, edge control, and artisan styling tools.",
+    "imageUrl": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop",
+    "productType": "ACCESSORY",
+    "isActive": true,
+    "createdAt": "2026-01-10T12:00:00Z"
+  },
+  {
+    "id": "cat-raw",
+    "name": "Raw Unprocessed Hair",
+    "slug": "raw-hair",
+    "description": "Single donor unadulterated raw hair from Vietnam, Cambodia, and Burma.",
+    "imageUrl": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=800&auto=format&fit=crop",
+    "productType": "RAW",
+    "isActive": true,
+    "createdAt": "2026-01-10T12:00:00Z"
+  }
+]
