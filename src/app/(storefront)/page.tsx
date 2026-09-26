@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getAllProducts } from "@/src/lib/products-store";
 import { ProductCard } from "@/src/components/product/ProductCard";
 import { HeroVideoClient } from "@/src/components/hero/HeroVideoClient";
+import { HairOfferingsSection } from "@/src/components/home/HairOfferingsSection";
 
 export default async function Homepage() {
   const products = await getAllProducts({ status: "PUBLISHED" });
@@ -47,6 +48,9 @@ export default async function Homepage() {
           </div>
         </div>
       </section>
+
+      {/* Types of Hair Offered (1. Human Hair, 2. Braided Wigs, 3. Hair Extensions, 4. Hair Accessories, 5. Hair Products, 6. Braiding Services) */}
+      <HairOfferingsSection />
 
       {/* Featured Collection Strip (Live from Admin catalog) */}
       <section className="w-full py-24 px-6 bg-warm-white flex flex-col items-center">
@@ -166,8 +170,8 @@ export default async function Homepage() {
         {/* Picture (Right on desktop) */}
         <div className="w-full lg:w-1/2 relative aspect-[4/5] lg:aspect-auto lg:h-[85vh] bg-gray-100 overflow-hidden group order-1 lg:order-2">
           <Image
-            src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=2000&auto=format&fit=crop"
-            alt="Raw Vietnamese Hair Collection"
+            src="/raw-vietnamese-hair.jpg"
+            alt="Raw Vietnamese Curly Hair Collection"
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
             referrerPolicy="no-referrer"

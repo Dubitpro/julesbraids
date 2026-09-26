@@ -70,16 +70,16 @@ export function Header() {
             </nav>
           </div>
 
-          {/* Brand Name & Logo (Center - side by side, logo only on mobile) */}
+          {/* Brand Name & Logo (Desktop: Logo + Name; Mobile: Just the Name "Julesbraids & Hairs") */}
           <div className="flex-1 text-center flex justify-center">
             <Link href="/" className="hover:opacity-85 transition-all flex items-center justify-center gap-2.5 sm:gap-3 group">
               <img 
                 src="/logo.jpg" 
                 alt="JulesBraids & Hairs" 
-                className="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full ring-1 ring-champagne/40 shadow-sm shrink-0 transition-transform group-hover:scale-105" 
+                className="hidden md:block h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full ring-1 ring-champagne/40 shadow-sm shrink-0 transition-transform group-hover:scale-105" 
               />
-              <span className="hidden md:inline-block font-serif text-lg lg:text-xl font-medium tracking-[0.12em] uppercase whitespace-nowrap">
-                JulesBraids &amp; Hairs
+              <span className="font-serif text-base sm:text-lg md:text-xl font-medium tracking-[0.08em] sm:tracking-[0.12em] uppercase whitespace-nowrap">
+                Julesbraids &amp; Hairs
               </span>
             </Link>
           </div>
@@ -125,7 +125,9 @@ export function Header() {
               className="hover:opacity-80 transition-opacity flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <img src="/logo.jpg" alt="JulesBraids & Hairs" className="h-10 w-10 object-cover rounded-full ring-1 ring-champagne/40" />
+              <span className="font-serif text-base font-medium tracking-[0.12em] uppercase">
+                Julesbraids &amp; Hairs
+              </span>
             </Link>
             <div className="w-6" /> {/* Spacer for centering */}
           </div>
